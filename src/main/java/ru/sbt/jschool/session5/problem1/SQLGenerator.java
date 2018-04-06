@@ -5,6 +5,24 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+class Cell {
+    private String fieldName;
+    private String columnType;
+
+    Cell(String fName, String cType) {
+        fieldName = fName;
+        columnType = cType;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public String getColumnType() {
+        return columnType;
+    }
+}
+
 public class SQLGenerator {
     private List<Cell> columns = new ArrayList<>();
     private int columnsCount = 0;
@@ -131,7 +149,7 @@ public class SQLGenerator {
             }
 
         return query.toString();
-   }
+    }
 
     public <T> String delete(Class<T> clazz) {
         getFields(clazz);
@@ -154,23 +172,5 @@ public class SQLGenerator {
             }
 
         return query.toString();
-    }
-}
-
-class Cell {
-    private String fieldName;
-    private String columnType;
-
-    Cell(String fName, String cType) {
-        fieldName = fName;
-        columnType = cType;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public String getColumnType() {
-        return columnType;
     }
 }
